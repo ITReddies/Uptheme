@@ -34,6 +34,8 @@
 
   <p>DEFAULT TEMPLATE PAGE</p>
 
+  <?php the_content(); ?>
+
 </body>
 <?php wp_footer(); ?>
 

@@ -34,6 +34,8 @@
 
   <p>FRONT PAGE</p>
 
+  <?php the_content(); ?>
+
 </body>
 <?php wp_footer(); ?>
 
