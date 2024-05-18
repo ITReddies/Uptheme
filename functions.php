@@ -6,27 +6,19 @@ function enqueue_custom_styles() {
 
 }
 
-function enqueue_custom_scripts() {
-    if (is_front_page()) {
-        wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/custom-scripts.js', array(), null, true);
-    }
-}
 
-function enqueue_custom_scripts_page() {
-    if (is_page()) {
-        wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/custom-scripts.js', array(), null, true);
-    }
+function enqueue_custom_js() {
+    wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/custom-scripts.js', array(), null, true);
 }
+add_action('wp_enqueue_scripts', 'enqueue_custom_js');
 
-add_action( 'wp_head', 'enqueue_custom_scripts' );
-add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
-add_action('wp_enqueue_scripts', 'enqueue_custom_scripts_page');
 
 function menus(){
 
 $locations = array( 
     
     'primary' => "desktop primary",
+    'footer-menu' => 'Footer2'
 
 );
 
@@ -36,3 +28,10 @@ register_nav_menus($locations);
 
 add_action('init', 'menus');
 
+add_action('wp_head', 'wpml_floating_language_switcher'); 
+  
+function wpml_floating_language_switcher() { 
+   echo '<div class="wpml-floating-language-switcher">';
+       do_action('wpml_add_language_selector');
+   echo '</div>'; 
+}
